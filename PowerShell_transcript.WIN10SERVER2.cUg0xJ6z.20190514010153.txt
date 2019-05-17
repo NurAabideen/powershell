@@ -1,0 +1,730 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20190514010153
+Username: WIN10SERVER2\nur
+RunAs User: WIN10SERVER2\nur
+Configuration Name: 
+Machine: WIN10SERVER2 (Microsoft Windows NT 10.0.17134.0)
+Host Application: C:\WINDOWS\system32\WindowsPowerShell\v1.0\PowerShell_ISE.exe
+Process ID: 1356
+PSVersion: 5.1.17134.590
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.17134.590
+BuildVersion: 10.0.17134.590
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is C:\Users\nur\Documents\PowerShell_transcript.WIN10SERVER2.cUg0xJ6z.20190514010153.txt
+PS C:\Users\nur\Documents> Get-PSDrive -PSProvider FileSystem
+
+Name           Used (GB)     Free (GB) Provider      Root                                                                                                                      CurrentLocation
+----           ---------     --------- --------      ----                                                                                                                      ---------------
+C                  21.97         37.49 FileSystem    C:\                                                                                                                   Users\nur\Documents
+D                                      FileSystem    D:\
+
+
+PS C:\Users\nur\Documents> et-Date | Out-File C:\users\nur\Documents\log.txt -Append
+hostname | Out-File C:\users\nur\Documents\log.txt -Append
+Get-PSDrive -PSProvider FileSystem | Out-File C:\Users\nur\Documents\log.txt -Append
+et-Date : The term 'et-Date' is not recognized as the name of a cmdlet, function, script file, or operable program. 
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ et-Date | Out-File C:\users\nur\Documents\log.txt -Append
++ ~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (et-Date:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+et-Date : The term 'et-Date' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that
+the path is correct and try again.
+At line:1 char:1
++ et-Date | Out-File C:\users\nur\Documents\log.txt -Append
++ ~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (et-Date:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\nur\Documents> Get-Date | Out-File C:\users\nur\Documents\log.txt -Append
+hostname | Out-File C:\users\nur\Documents\log.txt -Append
+Get-PSDrive -PSProvider FileSystem | Out-File C:\Users\nur\Documents\log.txt -Append
+PS C:\Users\nur\Documents> $un = "nur@nur.local"
+PS C:\Users\nur\Documents> $pw = 123456
+PS C:\Users\nur\Documents> $ps = $pw | ConvertTo-SecureString -AsPlainText 
+ConvertTo-SecureString : The system cannot protect plain text input. To suppress this warning and convert the plain 
+text to a SecureString, reissue the command specifying the Force parameter. For more information ,type: get-help 
+ConvertTo-SecureString.
+At line:1 char:13
++ $ps = $pw | ConvertTo-SecureString -AsPlainText
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [ConvertTo-SecureString], ArgumentException
+    + FullyQualifiedErrorId : 
+ImportSecureString_ForceRequired,Microsoft.PowerShell.Commands.ConvertToSecureStringCommand
+ConvertTo-SecureString : The system cannot protect plain text input. To suppress this warning and convert the plain text to a SecureString, reissue the command specifying the Force
+parameter. For more information ,type: get-help ConvertTo-SecureString.
+At line:1 char:13
++ $ps = $pw | ConvertTo-SecureString -AsPlainText
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [ConvertTo-SecureString], ArgumentException
+    + FullyQualifiedErrorId : ImportSecureString_ForceRequired,Microsoft.PowerShell.Commands.ConvertToSecureStringCommand
+
+PS C:\Users\nur\Documents> $ps = $pw | ConvertTo-SecureString -AsPlainText -Force
+PS C:\Users\nur\Documents> $ps
+System.Security.SecureString
+PS C:\Users\nur\Documents> $pw
+123456
+PS C:\Users\nur\Documents> $plainCred = new-object
+>> TerminatingError(): "The pipeline has been stopped."
+>> TerminatingError(): "The pipeline has been stopped."
+PS C:\Users\nur\Documents> $plainCred = new-object system.managment.automation.pscredential -ArgumentList $un $ps
+>> TerminatingError(New-Object): "A positional parameter cannot be found that accepts argument 'System.Security.SecureString'."
+New-Object : A positional parameter cannot be found that accepts argument 'System.Security.SecureString'.
+At line:1 char:14
++ ... plainCred = new-object system.managment.automation.pscredential -Argu ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [New-Object], ParameterBindingException
+    + FullyQualifiedErrorId : PositionalParameterNotFound,Microsoft.PowerShell.Commands.NewObjectCommand
+New-Object : A positional parameter cannot be found that accepts argument 'System.Security.SecureString'.
+At line:1 char:14
++ ... plainCred = new-object system.managment.automation.pscredential -Argu ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [New-Object], ParameterBindingException
+    + FullyQualifiedErrorId : PositionalParameterNotFound,Microsoft.PowerShell.Commands.NewObjectCommand
+
+PS C:\Users\nur\Documents> $plainCred = new-object system.managment.automation.pscredential -ArgumentList $un, $ps
+>> TerminatingError(New-Object): "Cannot find type [system.managment.automation.pscredential]: verify that the assembly containing this type is loaded."
+new-object : Cannot find type [system.managment.automation.pscredential]: verify that the assembly containing this type 
+is loaded.
+At line:1 char:14
++ ... plainCred = new-object system.managment.automation.pscredential -Argu ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidType: (:) [New-Object], PSArgumentException
+    + FullyQualifiedErrorId : TypeNotFound,Microsoft.PowerShell.Commands.NewObjectCommand
+new-object : Cannot find type [system.managment.automation.pscredential]: verify that the assembly containing this type is loaded.
+At line:1 char:14
++ ... plainCred = new-object system.managment.automation.pscredential -Argu ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidType: (:) [New-Object], PSArgumentException
+    + FullyQualifiedErrorId : TypeNotFound,Microsoft.PowerShell.Commands.NewObjectCommand
+
+PS C:\Users\nur\Documents> $plainCred = New-Object system.managment.automation.pscredential -ArgumentList $un, $ps
+>> TerminatingError(New-Object): "Cannot find type [system.managment.automation.pscredential]: verify that the assembly containing this type is loaded."
+New-Object : Cannot find type [system.managment.automation.pscredential]: verify that the assembly containing this type 
+is loaded.
+At line:1 char:14
++ ... plainCred = New-Object system.managment.automation.pscredential -Argu ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidType: (:) [New-Object], PSArgumentException
+    + FullyQualifiedErrorId : TypeNotFound,Microsoft.PowerShell.Commands.NewObjectCommand
+New-Object : Cannot find type [system.managment.automation.pscredential]: verify that the assembly containing this type is loaded.
+At line:1 char:14
++ ... plainCred = New-Object system.managment.automation.pscredential -Argu ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidType: (:) [New-Object], PSArgumentException
+    + FullyQualifiedErrorId : TypeNotFound,Microsoft.PowerShell.Commands.NewObjectCommand
+
+PS C:\Users\nur\Documents> get-help system.management.automation.pscredential
+
+NAME
+    Get-Credential
+
+SYNOPSIS
+    Gets a credential object based on a user name and password.
+
+
+SYNTAX
+    Get-Credential [-Credential] <PSCredential> [<CommonParameters>]
+
+    Get-Credential [[-UserName] <String>] -Message <String> [<CommonParameters>]
+
+
+DESCRIPTION
+    The Get-Credential cmdlet creates a credential object for a specified user name and password. You can use the credential object in security operations.
+
+    Beginning in Windows PowerShell 3.0, you can use the Message parameter to specify a customized message on the dialog box that prompts the user for their name and password.
+
+    The Get-Credential cmdlet prompts the user for a password or a user name and password. By default, an authentication dialog box appears to prompt the user. However, in some host
+    programs, such as the Windows PowerShell console, you can prompt the user at the command line by changing a registry entry. For more information about this registry entry, see the notes
+    and examples.
+
+
+RELATED LINKS
+    Online Version: http://go.microsoft.com/fwlink/?LinkId=821713
+
+REMARKS
+    To see the examples, type: "get-help Get-Credential -examples".
+    For more information, type: "get-help Get-Credential -detailed".
+    For technical information, type: "get-help Get-Credential -full".
+    For online help, type: "get-help Get-Credential -online"
+
+
+PS C:\Users\nur\Documents> $plainCred = New-Object System.Management.Automation.PSCredential -ArgumentList $un, $ps
+PS C:\Users\nur\Documents> $plainCred
+
+UserName                          Password
+--------                          --------
+nur@nur.local System.Security.SecureString
+
+
+PS C:\Users\nur\Documents> get-msoluser
+get-msoluser : The term 'get-msoluser' is not recognized as the name of a cmdlet, function, script file, or operable 
+program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ get-msoluser
++ ~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (get-msoluser:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+get-msoluser : The term 'get-msoluser' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included,
+verify that the path is correct and try again.
+At line:1 char:1
++ get-msoluser
++ ~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (get-msoluser:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\nur\Documents> get-msoluser
+get-msoluser : The term 'get-msoluser' is not recognized as the name of a cmdlet, function, script file, or operable 
+program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ get-msoluser
++ ~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (get-msoluser:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+get-msoluser : The term 'get-msoluser' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included,
+verify that the path is correct and try again.
+At line:1 char:1
++ get-msoluser
++ ~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (get-msoluser:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\nur\Documents> $askCred = Get-Credential
+PS C:\Users\nur\Documents> $askCred
+
+UserName                          Password
+--------                          --------
+nur@nur.local System.Security.SecureString
+
+
+PS C:\Users\nur\Documents> md c:\safe
+
+
+    Directory: C:\
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----        5/14/2019   1:15 AM                safe
+
+
+PS C:\Users\nur\Documents> $credentials = Get-Credential
+PS C:\Users\nur\Documents> $filename = 'c:\safe\secretfile.txt'
+PS C:\Users\nur\Documents> $credentails | Export-Clixml -Path $filename
+PS C:\Users\nur\Documents> $credentials
+
+UserName                          Password
+--------                          --------
+nur@nur.local System.Security.SecureString
+
+
+PS C:\Users\nur\Documents> $credentials | Export-Clixml
+PS C:\Users\nur\Documents> $credentials | Export-Clixml -Path $filename
+PS C:\Users\nur\Documents> $credPath = 'C:\safe\secretfile.txt'
+PS C:\Users\nur\Documents> $fileCred = Import-Clixml -Path $credPath
+PS C:\Users\nur\Documents> $fileCred
+
+UserName                          Password
+--------                          --------
+nur@nur.local System.Security.SecureString
+
+
+PS C:\Users\nur\Documents> Install-Module -name CredentialManager
+WARNING: Unable to resolve package source 'https://www.powershellgallery.com/api/v2'.
+PackageManagement\Install-Package : No match was found for the specified search criteria and module name 
+'CredentialManager'. Try Get-PSRepository to see all available registered module repositories.
+At C:\Program Files\WindowsPowerShell\Modules\PowerShellGet\2.1.2\PSModule.psm1:9349 char:21
++ ...          $null = PackageManagement\Install-Package @PSBoundParameters
++                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (Microsoft.Power....InstallPackage:InstallPackage) [Install-Package], 
+Exception
+    + FullyQualifiedErrorId : NoMatchFoundForCriteria,Microsoft.PowerShell.PackageManagement.Cmdlets.InstallPackage
+PackageManagement\Install-Package : No match was found for the specified search criteria and module name 'CredentialManager'. Try Get-PSRepository to see all available registered module
+repositories.
+At C:\Program Files\WindowsPowerShell\Modules\PowerShellGet\2.1.2\PSModule.psm1:9349 char:21
++ ...          $null = PackageManagement\Install-Package @PSBoundParameters
++                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (Microsoft.Power....InstallPackage:InstallPackage) [Install-Package], Exception
+    + FullyQualifiedErrorId : NoMatchFoundForCriteria,Microsoft.PowerShell.PackageManagement.Cmdlets.InstallPackage
+
+PS C:\Users\nur\Documents> Install-Module -Name CredentialManager -Force
+WARNING: Unable to resolve package source 'https://www.powershellgallery.com/api/v2'.
+PackageManagement\Install-Package : No match was found for the specified search criteria and module name 
+'CredentialManager'. Try Get-PSRepository to see all available registered module repositories.
+At C:\Program Files\WindowsPowerShell\Modules\PowerShellGet\2.1.2\PSModule.psm1:9349 char:21
++ ...          $null = PackageManagement\Install-Package @PSBoundParameters
++                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (Microsoft.Power....InstallPackage:InstallPackage) [Install-Package], 
+Exception
+    + FullyQualifiedErrorId : NoMatchFoundForCriteria,Microsoft.PowerShell.PackageManagement.Cmdlets.InstallPackage
+PackageManagement\Install-Package : No match was found for the specified search criteria and module name 'CredentialManager'. Try Get-PSRepository to see all available registered module
+repositories.
+At C:\Program Files\WindowsPowerShell\Modules\PowerShellGet\2.1.2\PSModule.psm1:9349 char:21
++ ...          $null = PackageManagement\Install-Package @PSBoundParameters
++                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (Microsoft.Power....InstallPackage:InstallPackage) [Install-Package], Exception
+    + FullyQualifiedErrorId : NoMatchFoundForCriteria,Microsoft.PowerShell.PackageManagement.Cmdlets.InstallPackage
+
+PS C:\Users\nur\Documents> ping google.com
+PS C:\Users\nur\Documents> TerminatingError(): "The pipeline has been stopped."
+>> TerminatingError(): "The pipeline has been stopped."
+PS C:\Users\nur\Documents> ping google.com
+
+Pinging google.com [216.58.203.110] with 32 bytes of data:
+Reply from 216.58.203.110: bytes=32 time=6ms TTL=128
+Reply from 216.58.203.110: bytes=32 time=7ms TTL=128
+PS C:\Users\nur\Documents> TerminatingError(): "The pipeline has been stopped."
+>> TerminatingError(): "The pipeline has been stopped."
+PS C:\Users\nur\Documents> Install-Module -name CredentialManager
+WARNING: Unable to resolve package source 'https://www.powershellgallery.com/api/v2'.
+PackageManagement\Install-Package : No match was found for the specified search criteria and module name 
+'CredentialManager'. Try Get-PSRepository to see all available registered module repositories.
+At C:\Program Files\WindowsPowerShell\Modules\PowerShellGet\2.1.2\PSModule.psm1:9349 char:21
++ ...          $null = PackageManagement\Install-Package @PSBoundParameters
++                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (Microsoft.Power....InstallPackage:InstallPackage) [Install-Package], 
+Exception
+    + FullyQualifiedErrorId : NoMatchFoundForCriteria,Microsoft.PowerShell.PackageManagement.Cmdlets.InstallPackage
+PackageManagement\Install-Package : No match was found for the specified search criteria and module name 'CredentialManager'. Try Get-PSRepository to see all available registered module
+repositories.
+At C:\Program Files\WindowsPowerShell\Modules\PowerShellGet\2.1.2\PSModule.psm1:9349 char:21
++ ...          $null = PackageManagement\Install-Package @PSBoundParameters
++                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (Microsoft.Power....InstallPackage:InstallPackage) [Install-Package], Exception
+    + FullyQualifiedErrorId : NoMatchFoundForCriteria,Microsoft.PowerShell.PackageManagement.Cmdlets.InstallPackage
+
+PS C:\Users\nur\Documents> Install-Module -Name CredentialManager -Force
+WARNING: Unable to resolve package source 'https://www.powershellgallery.com/api/v2'.
+PackageManagement\Install-Package : No match was found for the specified search criteria and module name 
+'CredentialManager'. Try Get-PSRepository to see all available registered module repositories.
+At C:\Program Files\WindowsPowerShell\Modules\PowerShellGet\2.1.2\PSModule.psm1:9349 char:21
++ ...          $null = PackageManagement\Install-Package @PSBoundParameters
++                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (Microsoft.Power....InstallPackage:InstallPackage) [Install-Package], 
+Exception
+    + FullyQualifiedErrorId : NoMatchFoundForCriteria,Microsoft.PowerShell.PackageManagement.Cmdlets.InstallPackage
+PackageManagement\Install-Package : No match was found for the specified search criteria and module name 'CredentialManager'. Try Get-PSRepository to see all available registered module
+repositories.
+At C:\Program Files\WindowsPowerShell\Modules\PowerShellGet\2.1.2\PSModule.psm1:9349 char:21
++ ...          $null = PackageManagement\Install-Package @PSBoundParameters
++                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (Microsoft.Power....InstallPackage:InstallPackage) [Install-Package], Exception
+    + FullyQualifiedErrorId : NoMatchFoundForCriteria,Microsoft.PowerShell.PackageManagement.Cmdlets.InstallPackage
+
+PS C:\Users\nur\Documents> get-help Invoke-CimMethod
+
+NAME
+    Invoke-CimMethod
+
+SYNOPSIS
+    Invokes a method of a CIM class.
+
+
+SYNTAX
+    Invoke-CimMethod [-ClassName] <String> [[-Arguments] <IDictionary>] [-MethodName] <String> [-ComputerName <String[]>] [-Namespace <String>] [-OperationTimeoutSec <UInt32>] [-Confirm]
+    [-WhatIf] [<CommonParameters>]
+
+    Invoke-CimMethod [-CimClass] <CimClass> [[-Arguments] <IDictionary>] [-MethodName] <String> [-ComputerName <String[]>] [-OperationTimeoutSec <UInt32>] [-Confirm] [-WhatIf]
+    [<CommonParameters>]
+
+    Invoke-CimMethod [-CimClass] <CimClass> [[-Arguments] <IDictionary>] [-MethodName] <String> [-OperationTimeoutSec <UInt32>] -CimSession <CimSession[]> [-Confirm] [-WhatIf]
+    [<CommonParameters>]
+
+    Invoke-CimMethod [[-Arguments] <IDictionary>] [-MethodName] <String> [-Namespace <String>] [-OperationTimeoutSec <UInt32>] [-QueryDialect <String>] -CimSession <CimSession[]> -Query
+    <String> [-Confirm] [-WhatIf] [<CommonParameters>]
+
+    Invoke-CimMethod [-ClassName] <String> [[-Arguments] <IDictionary>] [-MethodName] <String> [-Namespace <String>] [-OperationTimeoutSec <UInt32>] -CimSession <CimSession[]> [-Confirm]
+    [-WhatIf] [<CommonParameters>]
+
+    Invoke-CimMethod [-InputObject] <CimInstance> [[-Arguments] <IDictionary>] [-MethodName] <String> [-OperationTimeoutSec <UInt32>] [-ResourceUri <Uri>] -CimSession <CimSession[]>
+    [-Confirm] [-WhatIf] [<CommonParameters>]
+
+    Invoke-CimMethod [[-Arguments] <IDictionary>] [-MethodName] <String> [-Namespace <String>] [-OperationTimeoutSec <UInt32>] -CimSession <CimSession[]> -ResourceUri <Uri> [-Confirm]
+    [-WhatIf] [<CommonParameters>]
+
+    Invoke-CimMethod [[-Arguments] <IDictionary>] [-MethodName] <String> [-ComputerName <String[]>] [-Namespace <String>] [-OperationTimeoutSec <UInt32>] [-QueryDialect <String>] -Query
+    <String> [-Confirm] [-WhatIf] [<CommonParameters>]
+
+    Invoke-CimMethod [-InputObject] <CimInstance> [[-Arguments] <IDictionary>] [-MethodName] <String> [-ComputerName <String[]>] [-OperationTimeoutSec <UInt32>] [-ResourceUri <Uri>]
+    [-Confirm] [-WhatIf] [<CommonParameters>]
+
+    Invoke-CimMethod [[-Arguments] <IDictionary>] [-MethodName] <String> [-ComputerName <String[]>] [-Namespace <String>] [-OperationTimeoutSec <UInt32>] -ResourceUri <Uri> [-Confirm]
+    [-WhatIf] [<CommonParameters>]
+
+
+DESCRIPTION
+    The Invoke-CimMethod cmdlet invokes a method of a Common Information Model (CIM) class or CIM instance using the name-value pairs specified by the Arguments parameter.
+
+    If the InputObject parameter is not specified, the cmdlet works in one of the following ways:
+
+    --If neither the ComputerName parameter nor the CimSession parameter is specified, then this cmdlet works on local Windows Management Instrumentation (WMI) using a Component Object
+    Model (COM) session.
+    --If either the ComputerName parameter or the CimSession parameter is specified, then this cmdlet works against the CIM server specified by either the ComputerName parameter or the
+    CimSession parameter.
+
+    If the InputObject parameter is specified, the cmdlet works in one of the following ways:
+
+    --If neither the ComputerName parameter nor the CimSession parameter is specified, then this cmdlet uses the CIM session or computer name from the input object.
+    --If the either the ComputerName parameter or the CimSession parameter is specified, then this cmdlet uses the either the CimSession parameter value or ComputerName parameter value.
+    Note: This is not very common.
+
+
+RELATED LINKS
+    Online Version:
+    Get-CimClass
+    Get-CimInstance
+    Get-CimSession
+    New-CimSession
+
+REMARKS
+    To see the examples, type: "get-help Invoke-CimMethod -examples".
+    For more information, type: "get-help Invoke-CimMethod -detailed".
+    For technical information, type: "get-help Invoke-CimMethod -full".
+    For online help, type: "get-help Invoke-CimMethod -online"
+
+
+PS C:\Users\nur\Documents> Get-ComputerInfo
+
+
+WindowsBuildLabEx                                       : 17134.1.amd64fre.rs4_release.180410-1804
+WindowsCurrentVersion                                   : 6.3
+WindowsEditionId                                        : Professional
+WindowsInstallationType                                 : Client
+WindowsInstallDateFromRegistry                          : 4/14/2019 9:15:27 AM
+WindowsProductId                                        : 00331-10000-00001-AA450
+WindowsProductName                                      : Windows 10 Pro
+WindowsRegisteredOrganization                           :
+WindowsRegisteredOwner                                  : Windows User
+WindowsSystemRoot                                       : C:\WINDOWS
+WindowsVersion                                          : 1803
+BiosCharacteristics                                     :
+BiosBIOSVersion                                         :
+BiosBuildNumber                                         :
+BiosCaption                                             :
+BiosCodeSet                                             :
+BiosCurrentLanguage                                     :
+BiosDescription                                         :
+BiosEmbeddedControllerMajorVersion                      :
+BiosEmbeddedControllerMinorVersion                      :
+BiosFirmwareType                                        :
+BiosIdentificationCode                                  :
+BiosInstallableLanguages                                :
+BiosInstallDate                                         :
+BiosLanguageEdition                                     :
+BiosListOfLanguages                                     :
+BiosManufacturer                                        :
+BiosName                                                :
+BiosOtherTargetOS                                       :
+BiosPrimaryBIOS                                         :
+BiosReleaseDate                                         :
+BiosSeralNumber                                         :
+BiosSMBIOSBIOSVersion                                   :
+BiosSMBIOSMajorVersion                                  :
+BiosSMBIOSMinorVersion                                  :
+BiosSMBIOSPresent                                       :
+BiosSoftwareElementState                                :
+BiosStatus                                              :
+BiosSystemBiosMajorVersion                              :
+BiosSystemBiosMinorVersion                              :
+BiosTargetOperatingSystem                               :
+BiosVersion                                             :
+CsAdminPasswordStatus                                   :
+CsAutomaticManagedPagefile                              :
+CsAutomaticResetBootOption                              :
+CsAutomaticResetCapability                              :
+CsBootOptionOnLimit                                     :
+CsBootOptionOnWatchDog                                  :
+CsBootROMSupported                                      :
+CsBootStatus                                            :
+CsBootupState                                           :
+CsCaption                                               :
+CsChassisBootupState                                    :
+CsChassisSKUNumber                                      :
+CsCurrentTimeZone                                       :
+CsDaylightInEffect                                      :
+CsDescription                                           :
+CsDNSHostName                                           :
+CsDomain                                                :
+CsDomainRole                                            :
+CsEnableDaylightSavingsTime                             :
+CsFrontPanelResetStatus                                 :
+CsHypervisorPresent                                     :
+CsInfraredSupported                                     :
+CsInitialLoadInfo                                       :
+CsInstallDate                                           :
+CsKeyboardPasswordStatus                                :
+CsLastLoadInfo                                          :
+CsManufacturer                                          :
+CsModel                                                 :
+CsName                                                  :
+CsNetworkAdapters                                       :
+CsNetworkServerModeEnabled                              :
+CsNumberOfLogicalProcessors                             :
+CsNumberOfProcessors                                    :
+CsProcessors                                            :
+CsOEMStringArray                                        :
+CsPartOfDomain                                          :
+CsPauseAfterReset                                       :
+CsPCSystemType                                          :
+CsPCSystemTypeEx                                        :
+CsPowerManagementCapabilities                           :
+CsPowerManagementSupported                              :
+CsPowerOnPasswordStatus                                 :
+CsPowerState                                            :
+CsPowerSupplyState                                      :
+CsPrimaryOwnerContact                                   :
+CsPrimaryOwnerName                                      :
+CsResetCapability                                       :
+CsResetCount                                            :
+CsResetLimit                                            :
+CsRoles                                                 :
+CsStatus                                                :
+CsSupportContactDescription                             :
+CsSystemFamily                                          :
+CsSystemSKUNumber                                       :
+CsSystemType                                            :
+CsThermalState                                          :
+CsTotalPhysicalMemory                                   :
+CsPhyicallyInstalledMemory                              :
+CsUserName                                              :
+CsWakeUpType                                            :
+CsWorkgroup                                             :
+OsName                                                  :
+OsType                                                  :
+OsOperatingSystemSKU                                    :
+OsVersion                                               :
+OsCSDVersion                                            :
+OsBuildNumber                                           :
+OsHotFixes                                              :
+OsBootDevice                                            :
+OsSystemDevice                                          :
+OsSystemDirectory                                       :
+OsSystemDrive                                           :
+OsWindowsDirectory                                      :
+OsCountryCode                                           :
+OsCurrentTimeZone                                       :
+OsLocaleID                                              :
+OsLocale                                                :
+OsLocalDateTime                                         :
+OsLastBootUpTime                                        :
+OsUptime                                                :
+OsBuildType                                             :
+OsCodeSet                                               :
+OsDataExecutionPreventionAvailable                      :
+OsDataExecutionPrevention32BitApplications              :
+OsDataExecutionPreventionDrivers                        :
+OsDataExecutionPreventionSupportPolicy                  :
+OsDebug                                                 :
+OsDistributed                                           :
+OsEncryptionLevel                                       :
+OsForegroundApplicationBoost                            :
+OsTotalVisibleMemorySize                                :
+OsFreePhysicalMemory                                    :
+OsTotalVirtualMemorySize                                :
+OsFreeVirtualMemory                                     :
+OsInUseVirtualMemory                                    :
+OsTotalSwapSpaceSize                                    :
+OsSizeStoredInPagingFiles                               :
+OsFreeSpaceInPagingFiles                                :
+OsPagingFiles                                           :
+OsHardwareAbstractionLayer                              :
+OsInstallDate                                           :
+OsManufacturer                                          :
+OsMaxNumberOfProcesses                                  :
+OsMaxProcessMemorySize                                  :
+OsMuiLanguages                                          :
+OsNumberOfLicensedUsers                                 :
+OsNumberOfProcesses                                     :
+OsNumberOfUsers                                         :
+OsOrganization                                          :
+OsArchitecture                                          :
+OsLanguage                                              :
+OsProductSuites                                         :
+OsOtherTypeDescription                                  :
+OsPAEEnabled                                            :
+OsPortableOperatingSystem                               :
+OsPrimary                                               :
+OsProductType                                           :
+OsRegisteredUser                                        :
+OsSerialNumber                                          :
+OsServicePackMajorVersion                               :
+OsServicePackMinorVersion                               :
+OsStatus                                                :
+OsSuites                                                :
+OsServerLevel                                           :
+KeyboardLayout                                          :
+TimeZone                                                : (UTC+10:00) Canberra, Melbourne, Sydney
+LogonServer                                             : \\WIN10SERVER2
+PowerPlatformRole                                       : Desktop
+HyperVisorPresent                                       :
+HyperVRequirementDataExecutionPreventionAvailable       :
+HyperVRequirementSecondLevelAddressTranslation          :
+HyperVRequirementVirtualizationFirmwareEnabled          :
+HyperVRequirementVMMonitorModeExtensions                :
+DeviceGuardSmartStatus                                  : Off
+DeviceGuardRequiredSecurityProperties                   :
+DeviceGuardAvailableSecurityProperties                  :
+DeviceGuardSecurityServicesConfigured                   :
+DeviceGuardSecurityServicesRunning                      :
+DeviceGuardCodeIntegrityPolicyEnforcementStatus         :
+DeviceGuardUserModeCodeIntegrityPolicyEnforcementStatus :
+
+
+
+PS C:\Users\nur\Documents> Get-PSDrive -PSProvider FileSystem
+
+Name           Used (GB)     Free (GB) Provider      Root                                                                                                                      CurrentLocation
+----           ---------     --------- --------      ----                                                                                                                      ---------------
+C                  22.51         36.95 FileSystem    C:\                                                                                                                   Users\nur\Documents
+D                                      FileSystem    D:\
+
+
+PS C:\Users\nur\Documents> Get-CimInstance -ClassName Win32_Desktop -ComputerName .
+Get-CimInstance : The client cannot connect to the destination specified in the request. Verify that the service on the 
+destination is running and is accepting requests. Consult the logs and documentation for the WS-Management service 
+running on the destination, most commonly IIS or WinRM. If the destination is the WinRM service, run the following 
+command on the destination to analyze and configure the WinRM service: "winrm quickconfig".
+At line:1 char:1
++ Get-CimInstance -ClassName Win32_Desktop -ComputerName .
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ConnectionError: (root\cimv2:Win32_Desktop:String) [Get-CimInstance], CimException
+    + FullyQualifiedErrorId : HRESULT 0x80338012,Microsoft.Management.Infrastructure.CimCmdlets.GetCimInstanceCommand
+    + PSComputerName        : .
+Get-CimInstance : The client cannot connect to the destination specified in the request. Verify that the service on the destination is running and is accepting requests. Consult the logs
+and documentation for the WS-Management service running on the destination, most commonly IIS or WinRM. If the destination is the WinRM service, run the following command on the destination
+to analyze and configure the WinRM service: "winrm quickconfig".
+At line:1 char:1
++ Get-CimInstance -ClassName Win32_Desktop -ComputerName .
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ConnectionError: (root\cimv2:Win32_Desktop:String) [Get-CimInstance], CimException
+    + FullyQualifiedErrorId : HRESULT 0x80338012,Microsoft.Management.Infrastructure.CimCmdlets.GetCimInstanceCommand
+    + PSComputerName        : .
+
+PS C:\Users\nur\Documents> Get-CimInstance -ClassName Win32_Desktop -ComputerName 
+>> TerminatingError(Get-CimInstance): "Missing an argument for parameter 'ComputerName'. Specify a parameter of type 'System.String[]' and try again."
+Get-CimInstance : Missing an argument for parameter 'ComputerName'. Specify a parameter of type 'System.String[]' and 
+try again.
+At line:1 char:42
++ Get-CimInstance -ClassName Win32_Desktop -ComputerName
++                                          ~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [Get-CimInstance], ParameterBindingException
+    + FullyQualifiedErrorId : MissingArgument,Microsoft.Management.Infrastructure.CimCmdlets.GetCimInstanceCommand
+Get-CimInstance : Missing an argument for parameter 'ComputerName'. Specify a parameter of type 'System.String[]' and try again.
+At line:1 char:42
++ Get-CimInstance -ClassName Win32_Desktop -ComputerName
++                                          ~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [Get-CimInstance], ParameterBindingException
+    + FullyQualifiedErrorId : MissingArgument,Microsoft.Management.Infrastructure.CimCmdlets.GetCimInstanceCommand
+
+PS C:\Users\nur\Documents> hostname
+win10server2
+PS C:\Users\nur\Documents> Get-CimInstance -ClassName Win32_Desktop -ComputerName win10server2
+Get-CimInstance : The client cannot connect to the destination specified in the request. Verify that the service on the 
+destination is running and is accepting requests. Consult the logs and documentation for the WS-Management service 
+running on the destination, most commonly IIS or WinRM. If the destination is the WinRM service, run the following 
+command on the destination to analyze and configure the WinRM service: "winrm quickconfig".
+At line:1 char:1
++ Get-CimInstance -ClassName Win32_Desktop -ComputerName win10server2
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ConnectionError: (root\cimv2:Win32_Desktop:String) [Get-CimInstance], CimException
+    + FullyQualifiedErrorId : HRESULT 0x80338012,Microsoft.Management.Infrastructure.CimCmdlets.GetCimInstanceCommand
+    + PSComputerName        : win10server2
+Get-CimInstance : The client cannot connect to the destination specified in the request. Verify that the service on the destination is running and is accepting requests. Consult the logs
+and documentation for the WS-Management service running on the destination, most commonly IIS or WinRM. If the destination is the WinRM service, run the following command on the destination
+to analyze and configure the WinRM service: "winrm quickconfig".
+At line:1 char:1
++ Get-CimInstance -ClassName Win32_Desktop -ComputerName win10server2
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ConnectionError: (root\cimv2:Win32_Desktop:String) [Get-CimInstance], CimException
+    + FullyQualifiedErrorId : HRESULT 0x80338012,Microsoft.Management.Infrastructure.CimCmdlets.GetCimInstanceCommand
+    + PSComputerName        : win10server2
+
+PS C:\Users\nur\Documents> Get-CimInstance -ClassName Win32_ComputerSystem
+
+Name             PrimaryOwnerName                   Domain                             TotalPhysicalMemory                Model                              Manufacturer
+----             ----------------                   ------                             -------------------                -----                              ------------
+WIN10SERVER2     Windows User                       WORKGROUP                          4294430720                         VMware Virtual Platform            VMware, Inc.
+
+
+PS C:\Users\nur\Documents> Get-CimInstance -ClassName Win32_ComputerSystem.Domain
+>> TerminatingError(Get-CimInstance): "Argument 'Win32_ComputerSystem.Domain' contains characters that are not allowed in parameter 'ClassName'. Supply an argument that is valid and then try the command again."
+Get-CimInstance : Argument 'Win32_ComputerSystem.Domain' contains characters that are not allowed in parameter 
+'ClassName'. Supply an argument that is valid and then try the command again.
+At line:1 char:1
++ Get-CimInstance -ClassName Win32_ComputerSystem.Domain
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Get-CimInstance], ArgumentException
+    + FullyQualifiedErrorId : 
+System.ArgumentException,Microsoft.Management.Infrastructure.CimCmdlets.GetCimInstanceCommand
+Get-CimInstance : Argument 'Win32_ComputerSystem.Domain' contains characters that are not allowed in parameter 'ClassName'. Supply an argument that is valid and then try the command again.
+At line:1 char:1
++ Get-CimInstance -ClassName Win32_ComputerSystem.Domain
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Get-CimInstance], ArgumentException
+    + FullyQualifiedErrorId : System.ArgumentException,Microsoft.Management.Infrastructure.CimCmdlets.GetCimInstanceCommand
+
+PS C:\Users\nur\Documents> Get-CimInstance -ClassName Win32_ComputerSystem | Filter
+Filter : The term 'Filter' is not recognized as the name of a cmdlet, function, script file, or operable program. Check 
+the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:51
++ Get-CimInstance -ClassName Win32_ComputerSystem | Filter
++                                                   ~~~~~~
+    + CategoryInfo          : ObjectNotFound: (Filter:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+Filter : The term 'Filter' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the
+path is correct and try again.
+At line:1 char:51
++ Get-CimInstance -ClassName Win32_ComputerSystem | Filter
++                                                   ~~~~~~
+    + CategoryInfo          : ObjectNotFound: (Filter:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\nur\Documents> Get-CimInstance -ClassName Win32_LogicalDisk -Filter "DriveType=3" -ComputerName .
+Get-CimInstance : The client cannot connect to the destination specified in the request. Verify that the service on the 
+destination is running and is accepting requests. Consult the logs and documentation for the WS-Management service 
+running on the destination, most commonly IIS or WinRM. If the destination is the WinRM service, run the following 
+command on the destination to analyze and configure the WinRM service: "winrm quickconfig".
+At line:1 char:1
++ Get-CimInstance -ClassName Win32_LogicalDisk -Filter "DriveType=3" -C ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ConnectionError: (:) [Get-CimInstance], CimException
+    + FullyQualifiedErrorId : HRESULT 0x80338012,Microsoft.Management.Infrastructure.CimCmdlets.GetCimInstanceCommand
+    + PSComputerName        : .
+Get-CimInstance : The client cannot connect to the destination specified in the request. Verify that the service on the destination is running and is accepting requests. Consult the logs
+and documentation for the WS-Management service running on the destination, most commonly IIS or WinRM. If the destination is the WinRM service, run the following command on the destination
+to analyze and configure the WinRM service: "winrm quickconfig".
+At line:1 char:1
++ Get-CimInstance -ClassName Win32_LogicalDisk -Filter "DriveType=3" -C ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ConnectionError: (:) [Get-CimInstance], CimException
+    + FullyQualifiedErrorId : HRESULT 0x80338012,Microsoft.Management.Infrastructure.CimCmdlets.GetCimInstanceCommand
+    + PSComputerName        : .
+
+PS C:\Users\nur\Documents> Get-CimInstance -ClassName Win32_LogicalDisk -Filter "DriveType=3" -ComputerName win10server2
+Get-CimInstance : The client cannot connect to the destination specified in the request. Verify that the service on the 
+destination is running and is accepting requests. Consult the logs and documentation for the WS-Management service 
+running on the destination, most commonly IIS or WinRM. If the destination is the WinRM service, run the following 
+command on the destination to analyze and configure the WinRM service: "winrm quickconfig".
+At line:1 char:1
++ Get-CimInstance -ClassName Win32_LogicalDisk -Filter "DriveType=3" -C ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ConnectionError: (:) [Get-CimInstance], CimException
+    + FullyQualifiedErrorId : HRESULT 0x80338012,Microsoft.Management.Infrastructure.CimCmdlets.GetCimInstanceCommand
+    + PSComputerName        : win10server2
+Get-CimInstance : The client cannot connect to the destination specified in the request. Verify that the service on the destination is running and is accepting requests. Consult the logs
+and documentation for the WS-Management service running on the destination, most commonly IIS or WinRM. If the destination is the WinRM service, run the following command on the destination
+to analyze and configure the WinRM service: "winrm quickconfig".
+At line:1 char:1
++ Get-CimInstance -ClassName Win32_LogicalDisk -Filter "DriveType=3" -C ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ConnectionError: (:) [Get-CimInstance], CimException
+    + FullyQualifiedErrorId : HRESULT 0x80338012,Microsoft.Management.Infrastructure.CimCmdlets.GetCimInstanceCommand
+    + PSComputerName        : win10server2
+
